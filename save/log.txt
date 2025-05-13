@@ -1,0 +1,12 @@
+2025-0514 03:17:00 DEBUG    word_embeds.weight: torch.Size([22075, 100]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.weight_ih_l0: torch.Size([400, 100]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.weight_hh_l0: torch.Size([400, 100]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.bias_ih_l0: torch.Size([400]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.bias_hh_l0: torch.Size([400]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.weight_ih_l0_reverse: torch.Size([400, 100]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.weight_hh_l0_reverse: torch.Size([400, 100]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.bias_ih_l0_reverse: torch.Size([400]), require_grad=True
+2025-0514 03:17:00 DEBUG    lstm.bias_hh_l0_reverse: torch.Size([400]), require_grad=True
+2025-0514 03:17:00 DEBUG    fc.weight: torch.Size([6, 200]), require_grad=True
+2025-0514 03:17:00 DEBUG    fc.bias: torch.Size([6]), require_grad=True
+2025-0514 03:18:02 DEBUG    epoch 0-step 100 loss: 1.329102
