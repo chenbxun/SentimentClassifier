@@ -35,8 +35,11 @@ class SentimentClassifier(nn.Module):
         lstm_out, _ = pad_packed_sequence(lstm_out, batch_first=True)
         # 使用最后一个时间步的隐藏状态作为句子表示
         # last_hidden_state = self.hidden[0].transpose(0, 1).reshape(batch_size, -1) # 输出维度：(batch_size, hidden_dim)
-        last_layer_hidden = self.hidden[0][-2:, :, :]  # 取最后两层（最后一个前向+后向）
-        last_hidden_state = torch.cat([last_layer_hidden[0], last_layer_hidden[1]], dim=1)
+        # last_layer_hidden = self.hidden[0][-2:, :, :]  # 取最后两层（最后一个前向+后向）
+        # last_hidden_state = torch.cat([last_layer_hidden[0], last_layer_hidden[1]], dim=1)
+        forward_last_hidden = self.hidden[0][2 * (self.num_layers - 1), :, :]  # 正向LSTM的最后一层
+        backward_last_hidden = self.hidden[0][2 * self.num_layers - 1, :, :]   # 反向LSTM的最后一层
+        last_hidden_state = torch.cat((forward_last_hidden, backward_last_hidden), dim=1)  # 拼接
         
         out = self.fc(self.dropout(last_hidden_state))
         log_probs = self.softmax(out)
