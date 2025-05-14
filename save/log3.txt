@@ -1,0 +1,60 @@
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--embedding_dim', type=int, default=100)
+    parser.add_argument('--hidden_dim', type=int, default=200)
+    parser.add_argument('--output_dim', type=int, default=6)
+    parser.add_argument('--dropout', type=float, default=0.5)
+    parser.add_argument('--lr', type=float, default=0.01)
+    parser.add_argument('--max_epoch', type=int, default=10)
+    parser.add_argument('--batch_size', type=int, default=2048)
+    parser.add_argument('--cuda', action='store_true', default=False)
+2025-0514 03:45:44 DEBUG    word_embeds.weight: torch.Size([22075, 100]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.weight_ih_l0: torch.Size([400, 100]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.weight_hh_l0: torch.Size([400, 100]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.bias_ih_l0: torch.Size([400]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.bias_hh_l0: torch.Size([400]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.weight_ih_l0_reverse: torch.Size([400, 100]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.weight_hh_l0_reverse: torch.Size([400, 100]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.bias_ih_l0_reverse: torch.Size([400]), require_grad=True
+2025-0514 03:45:44 DEBUG    lstm.bias_hh_l0_reverse: torch.Size([400]), require_grad=True
+2025-0514 03:45:44 DEBUG    fc.weight: torch.Size([6, 200]), require_grad=True
+2025-0514 03:45:44 DEBUG    fc.bias: torch.Size([6]), require_grad=True
+2025-0514 03:45:45 DEBUG    epoch 0-step 5 loss: 1.596503
+2025-0514 03:45:45 DEBUG    epoch 0-step 10 loss: 1.384383
+2025-0514 03:45:46 INFO     Validation accuracy: 0.5325
+2025-0514 03:45:46 INFO     model has been saved in  ./save/model_epoch0.pkl
+2025-0514 03:45:46 DEBUG    epoch 1-step 5 loss: 1.163145
+2025-0514 03:45:46 DEBUG    epoch 1-step 10 loss: 1.081155
+2025-0514 03:45:47 INFO     Validation accuracy: 0.6080
+2025-0514 03:45:47 INFO     model has been saved in  ./save/model_epoch1.pkl
+2025-0514 03:45:47 DEBUG    epoch 2-step 5 loss: 0.918956
+2025-0514 03:45:47 DEBUG    epoch 2-step 10 loss: 0.857371
+2025-0514 03:45:47 INFO     Validation accuracy: 0.6550
+2025-0514 03:45:47 INFO     model has been saved in  ./save/model_epoch2.pkl
+2025-0514 03:45:48 DEBUG    epoch 3-step 5 loss: 0.713691
+2025-0514 03:45:48 DEBUG    epoch 3-step 10 loss: 0.681231
+2025-0514 03:45:48 INFO     Validation accuracy: 0.6655
+2025-0514 03:45:48 INFO     model has been saved in  ./save/model_epoch3.pkl
+2025-0514 03:45:49 DEBUG    epoch 4-step 5 loss: 0.541972
+2025-0514 03:45:49 DEBUG    epoch 4-step 10 loss: 0.553892
+2025-0514 03:45:49 INFO     Validation accuracy: 0.6810
+2025-0514 03:45:49 INFO     model has been saved in  ./save/model_epoch4.pkl
+2025-0514 03:45:49 DEBUG    epoch 5-step 5 loss: 0.434262
+2025-0514 03:45:50 DEBUG    epoch 5-step 10 loss: 0.428725
+2025-0514 03:45:50 INFO     Validation accuracy: 0.6785
+2025-0514 03:45:50 INFO     model has been saved in  ./save/model_epoch5.pkl
+2025-0514 03:45:50 DEBUG    epoch 6-step 5 loss: 0.342827
+2025-0514 03:45:51 DEBUG    epoch 6-step 10 loss: 0.326695
+2025-0514 03:45:51 INFO     Validation accuracy: 0.6760
+2025-0514 03:45:51 INFO     model has been saved in  ./save/model_epoch6.pkl
+2025-0514 03:45:51 DEBUG    epoch 7-step 5 loss: 0.255950
+2025-0514 03:45:52 DEBUG    epoch 7-step 10 loss: 0.254471
+2025-0514 03:45:52 INFO     Validation accuracy: 0.6805
+2025-0514 03:45:52 INFO     model has been saved in  ./save/model_epoch7.pkl
+2025-0514 03:45:52 DEBUG    epoch 8-step 5 loss: 0.187656
+2025-0514 03:45:52 DEBUG    epoch 8-step 10 loss: 0.190905
+2025-0514 03:45:53 INFO     Validation accuracy: 0.6710
+2025-0514 03:45:53 INFO     model has been saved in  ./save/model_epoch8.pkl
+2025-0514 03:45:53 DEBUG    epoch 9-step 5 loss: 0.152442
+2025-0514 03:45:53 DEBUG    epoch 9-step 10 loss: 0.154498
+2025-0514 03:45:53 INFO     Validation accuracy: 0.6740
+2025-0514 03:45:53 INFO     model has been saved in  ./save/model_epoch9.pkl

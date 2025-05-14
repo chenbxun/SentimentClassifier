@@ -24,7 +24,7 @@ def handle_data(data_type):
     labels = []
 
     is_first = True
-    with open(os.path.join(DATA_PATH, data_type + ".csv"), 'r', encoding='utf-8') as f:
+    with open(os.path.join("data" if data_type == "test" else "", DATA_PATH, data_type + ".csv"), 'r', encoding='utf-8') as f:
         reader = csv.reader(f)
         for row in reader: # 对每一行文本
             if is_first:
@@ -40,11 +40,12 @@ def handle_data(data_type):
             sentence = thu1.cut(sentence, text=True).split(" ") # 分词
 
             #统计全局词频
-            for word in sentence:
-                if word not in count:
-                    count[word] = 1
-                else:
-                    count[word] += 1
+            if data_type != 'test':
+                for word in sentence:
+                    if word not in count:
+                        count[word] = 1
+                    else:
+                        count[word] += 1
 
             sentences.append(sentence)
             labels.append(tag2id[row[2]])

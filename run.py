@@ -9,15 +9,17 @@ from model import SentimentClassifier
 from dataloader import Sentence
 import torch.nn as nn
 
+# python ./run.py --cuda
 def get_param():
     parser = argparse.ArgumentParser()
     parser.add_argument('--embedding_dim', type=int, default=100)
     parser.add_argument('--hidden_dim', type=int, default=200)
     parser.add_argument('--output_dim', type=int, default=6)
     parser.add_argument('--dropout', type=float, default=0.5)
-    parser.add_argument('--lr', type=float, default=0.005)
-    parser.add_argument('--max_epoch', type=int, default=30)
-    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--num_layers', type=int, default=1)
+    parser.add_argument('--lr', type=float, default=0.01)
+    parser.add_argument('--max_epoch', type=int, default=10)
+    parser.add_argument('--batch_size', type=int, default=2048)
     parser.add_argument('--cuda', action='store_true', default=False)
     return parser.parse_args()
 
@@ -50,7 +52,7 @@ def main(args):
         x_val = pickle.load(inp)
         y_val = pickle.load(inp)
 
-    model = SentimentClassifier(len(word2id), args.embedding_dim, args.hidden_dim, args.output_dim, args.dropout)
+    model = SentimentClassifier(len(word2id), args.embedding_dim, args.hidden_dim, args.output_dim, args.dropout, args.num_layers)
     if use_cuda:
         model = model.cuda()
     for name, param in model.named_parameters():
@@ -81,7 +83,6 @@ def main(args):
             if use_cuda:
                 sentence = sentence.cuda()
                 label = label.cuda()
-                mask = mask.cuda()
 
             # forward
             output = model(sentence, length) 
@@ -94,7 +95,7 @@ def main(args):
             optimizer.step()
 
             step += 1
-            if step % 100 == 0:
+            if step % 5 == 0:
                 logging.debug('epoch %d-step %d loss: %f' % (epoch, step, sum(log)/len(log)))
                 log = []
 
